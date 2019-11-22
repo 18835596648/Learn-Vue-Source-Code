@@ -1,0 +1,23 @@
+{
+  "name": "Learn-Vue-Source-Code",
+  "version": "1.0.0",
+  "description": "",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+	"deploy": "sh build.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NLRX-WJC/Learn-Vue-Source-Code.git"
+  },
+  "keywords": [],
+  "author": "NLRX",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^1.2.0"
+  }
+}
