@@ -62,7 +62,17 @@ module.exports = {
           ["reactive/object",'Object的变化侦测'],
           ["reactive/array",'Array的变化侦测'],
         ]
-      }
+      },
+      {
+        title: "虚拟DOM",
+        collapsable: false,
+        children: [
+          ["virtualDOM/",'Vue中的虚拟DOM'],
+          ["virtualDOM/patch",'Vue中的DOM-Diff'],
+          ["virtualDOM/updataChildren",'更新子节点'],
+          ["virtualDOM/optimizeUpdataChildren",'优化更新子节点'],
+        ]
+      },
     ]
   }
 };
