@@ -22,7 +22,7 @@ export function optimize (root: ?ASTElement, options: CompilerOptions) {
   if (!root) return
   isStaticKey = genStaticKeysCached(options.staticKeys || '')
   isPlatformReservedTag = options.isReservedTag || no
-  // first pass: mark all non-static nodes.
+  // first pass: mark all non-static nodes.标记静态节点
   markStatic(root)
   // second pass: mark static roots.
   markStaticRoots(root, false)
@@ -75,10 +75,11 @@ function markStaticRoots (node: ASTNode, isInFor: boolean) {
     // For a node to qualify as a static root, it should have children that
     // are not just static text. Otherwise the cost of hoisting out will
     // outweigh the benefits and it's better off to just always render it fresh.
-    if (node.static && node.children.length && !(
-      node.children.length === 1 &&
-      node.children[0].type === 3
-    )) {
+    // 为了使节点有资格作为静态根节点，它应具有不只是静态文本的子节点。 否则，优化的成本将超过收益，最好始终将其更新。
+    if (node.static &&               // 节点本身必须是静态节点；
+      node.children.length &&        // 必须拥有子节点 `children`
+      !(node.children.length === 1 &&node.children[0].type === 3)  // 子节点不能只是只有一个文本节点
+    ) {
       node.staticRoot = true
       return
     } else {
@@ -98,19 +99,19 @@ function markStaticRoots (node: ASTNode, isInFor: boolean) {
 }
 
 function isStatic (node: ASTNode): boolean {
-  if (node.type === 2) { // expression
+  if (node.type === 2) { // 包含变量的动态文本节点
     return false
   }
-  if (node.type === 3) { // text
+  if (node.type === 3) { // 不包含变量的纯文本节点
     return true
   }
   return !!(node.pre || (
-    !node.hasBindings && // no dynamic bindings
-    !node.if && !node.for && // not v-if or v-for or v-else
-    !isBuiltInTag(node.tag) && // not a built-in
-    isPlatformReservedTag(node.tag) && // not a component
-    !isDirectChildOfTemplateFor(node) &&
-    Object.keys(node).every(isStaticKey)
+    !node.hasBindings && // 不能使用动态绑定语法
+    !node.if && !node.for && // 不能使用`v-if`、`v-else`、`v-for`指令
+    !isBuiltInTag(node.tag) && // 不能是内置组件，即标签名不能是`slot`和`component`
+    isPlatformReservedTag(node.tag) && // 标签名必须是平台保留标签，即不能是组件
+    !isDirectChildOfTemplateFor(node) && // 当前节点的父节点不能是带有 `v-for` 的 `template` 标签
+    Object.keys(node).every(isStaticKey)  // 节点的所有属性的 `key` 都必须是静态节点才有的 `key`
   ))
 }
 
