@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /logo.png
-heroText: Vue.js源码学习
+heroText: 逐行剖析 Vue.js 源码
 tagline: 九大模块，逐个击破
 actionText: 开始学习
 actionLink: /start/

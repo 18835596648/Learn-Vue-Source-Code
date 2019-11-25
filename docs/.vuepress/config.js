@@ -2,7 +2,7 @@ const path = require("path");
 module.exports = {
   base: "/Learn-Vue-Source-Code/",
   dest: "dist",
-  title: "Vue.js 源码学习",
+  title: "逐行剖析 Vue.js 源码",
   serviceWorker: false,
   markdown: {
     lineNumbers: true
@@ -40,10 +40,6 @@ module.exports = {
       //   text: '3.x 版本',
       //   link: '/v3/guide/'
       // },
-      // {
-      //   text: '配套视频',
-      //   link: 'https://coding.imooc.com/class/228.html'
-      // }
     ],
     sidebarDepth : 1,
     sidebar: [
@@ -71,6 +67,18 @@ module.exports = {
           ["virtualDOM/patch",'Vue中的DOM-Diff'],
           ["virtualDOM/updataChildren",'更新子节点'],
           ["virtualDOM/optimizeUpdataChildren",'优化更新子节点'],
+        ]
+      },
+	  {
+        title: "模板编译",
+        collapsable: false,
+        children: [
+          ["complie/",'综述'],
+          ["complie/parse",'模板解析阶段(整体运行流程)'],
+          ["complie/HTMLParse",'模板解析阶段(HTML解析器)'],
+          ["complie/textParse",'模板解析阶段(文本解析器)'],
+          ["complie/optimize",'优化阶段'],
+          ["complie/codegen",'代码生成阶段']
         ]
       },
     ]
