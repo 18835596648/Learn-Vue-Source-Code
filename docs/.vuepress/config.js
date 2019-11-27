@@ -78,7 +78,8 @@ module.exports = {
           ["complie/HTMLParse",'模板解析阶段(HTML解析器)'],
           ["complie/textParse",'模板解析阶段(文本解析器)'],
           ["complie/optimize",'优化阶段'],
-          ["complie/codegen",'代码生成阶段']
+          ["complie/codegen", '代码生成阶段'],
+          ["complie/summary",'总结'],
         ]
       },
     ]

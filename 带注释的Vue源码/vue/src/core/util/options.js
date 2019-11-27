@@ -132,6 +132,24 @@ strats.data = function (
 /**
  * Hooks and props are merged as arrays.
  */
+/**
+ * if (childVal) {
+ *   if (parentVal) {
+ *     return parentVal.concat(childVal)
+ *   } else {
+ *     if (Array.isArray(childVal)) {
+ *       return childVal
+ *     } else {
+ *       return [childVal]
+ *     }
+ *   }
+ * } else {
+ *   return parentVal
+ * }
+ * 如果不存在 childVal ，就返回 parentVal；
+ * 否则再判断是否存在 parentVal，如果存在就把 childVal 添加到 parentVal 后返回新数组；
+ * 否则返回 childVal 的数组。
+ */
 function mergeHook (
   parentVal: ?Array<Function>,
   childVal: ?Function | ?Array<Function>
@@ -144,6 +162,8 @@ function mergeHook (
         : [childVal]
     : parentVal
 }
+
+
 
 LIFECYCLE_HOOKS.forEach(hook => {
   strats[hook] = mergeHook
@@ -397,7 +417,8 @@ export function mergeOptions (
       mergeField(key)
     }
   }
-  function mergeField (key) {
+  function mergeField(key) {
+    // 对于不同的属性采用不同的合并策略
     const strat = strats[key] || defaultStrat
     options[key] = strat(parent[key], child[key], vm, key)
   }
