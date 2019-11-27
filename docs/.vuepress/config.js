@@ -69,7 +69,7 @@ module.exports = {
           ["virtualDOM/optimizeUpdataChildren",'优化更新子节点'],
         ]
       },
-	  {
+	    {
         title: "模板编译",
         collapsable: false,
         children: [
@@ -80,6 +80,14 @@ module.exports = {
           ["complie/optimize",'优化阶段'],
           ["complie/codegen", '代码生成阶段'],
           ["complie/summary",'总结'],
+        ]
+      },
+      {
+        title: "生命周期",
+        collapsable: false,
+        children: [
+          ["lifecycle/",'综述'],
+          ["lifecycle/newVue",'初始化阶段(new Vue)'],
         ]
       },
     ]
