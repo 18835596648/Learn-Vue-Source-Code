@@ -65,19 +65,20 @@ export function addHandler (
     )
   }
 
-  // check capture modifier
+  // check capture modifier 判断是否有capture修饰符
   if (modifiers.capture) {
     delete modifiers.capture
-    name = '!' + name // mark the event as captured
+    name = '!' + name // 给事件名前加'!'用以标记capture修饰符
   }
+  // 判断是否有once修饰符
   if (modifiers.once) {
     delete modifiers.once
-    name = '~' + name // mark the event as once
+    name = '~' + name // 给事件名前加'~'用以标记once修饰符
   }
-  /* istanbul ignore if */
+  // 判断是否有passive修饰符
   if (modifiers.passive) {
     delete modifiers.passive
-    name = '&' + name // mark the event as passive
+    name = '&' + name // 给事件名前加'&'用以标记passive修饰符
   }
 
   // normalize click.right and click.middle since they don't actually fire
