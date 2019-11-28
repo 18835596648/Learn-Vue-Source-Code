@@ -88,6 +88,7 @@ module.exports = {
         children: [
           ["lifecycle/",'综述'],
           ["lifecycle/newVue",'初始化阶段(new Vue)'],
+          ["lifecycle/initLifecycle",'初始化阶段(initLifecycle)'],
         ]
       },
     ]
