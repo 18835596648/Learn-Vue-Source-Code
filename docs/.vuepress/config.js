@@ -90,6 +90,7 @@ module.exports = {
           ["lifecycle/newVue",'初始化阶段(new Vue)'],
           ["lifecycle/initLifecycle",'初始化阶段(initLifecycle)'],
           ["lifecycle/initEvents",'初始化阶段(initEvents)'],
+          ["lifecycle/initInjections",'初始化阶段(initInjections)'],
         ]
       },
     ]
