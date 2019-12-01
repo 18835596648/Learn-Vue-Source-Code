@@ -15,7 +15,7 @@ features:
 - title: 实例方法
   details: 学习 Vue 中所有实例方法(即所有以$开头的方法)的实现原理。
 - title: 全局API
-  details: 学习 Vu e中所有全局 API 的实现原理。
+  details: 学习 Vue 中所有全局 API 的实现原理。
 - title: 生命周期
   details: 学习 Vue 中组件的生命周期实现原理。
 - title: 指令
