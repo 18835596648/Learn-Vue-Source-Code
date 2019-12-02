@@ -152,6 +152,7 @@ export function cached<F: Function> (fn: F): F {
 
 /**
  * Camelize a hyphen-delimited string.
+ * 把'-'连接的字符串转成驼峰式，如:back-ground => backGround
  */
 const camelizeRE = /-(\w)/g
 export const camelize = cached((str: string): string => {
@@ -167,6 +168,7 @@ export const capitalize = cached((str: string): string => {
 
 /**
  * Hyphenate a camelCase string.
+ * 把驼峰式字符串转成'-'连接，如:BackGround => back-ground
  */
 const hyphenateRE = /\B([A-Z])/g
 export const hyphenate = cached((str: string): string => {
