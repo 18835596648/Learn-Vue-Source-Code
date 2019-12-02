@@ -35,6 +35,11 @@ export function validateProp (
     } else if (value === '' || value === hyphenate(key)) {
       // only cast empty string / same name to boolean if
       // boolean has higher priority
+      // - 该属性值为空字符串或者属性值与属性名相等；
+      // - `prop`的`type`属性中不存在`String`类型；
+      // - 如果`prop`的`type`属性中存在`String`类型，
+      //   那么`Boolean`类型在`type`属性中的索引必须小于`String`类型的索引，
+      //   即`Boolean`类型的优先级更高
       const stringIndex = getTypeIndex(String, prop.type)
       if (stringIndex < 0 || booleanIndex < stringIndex) {
         value = true
